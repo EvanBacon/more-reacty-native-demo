@@ -6,6 +6,7 @@ import { Text, View, ViewProps } from "@/components/Themed";
 declare global {
   namespace JSX {
     interface IntrinsicElements {
+      picker: unknown;
       "map-view": ViewProps & { zoomEnabled?: boolean };
     }
   }
@@ -23,12 +24,13 @@ export default function TabOneScreen() {
       <Text
         onPress={() => {
           console.log(">Calendar", native.calendar);
-          native.calendar.createEvent();
+          // native.calendar.createEvent();
         }}
         style={styles.title}
       >
         Create Event
       </Text>
+      <picker />
       <map-view
         style={{ flex: 1 }}
         zoomEnabled={false}

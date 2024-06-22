@@ -33,6 +33,22 @@ class calendar: NSObject, RCTBridgeModule {
   }
 }
 
+// SwiftUI view available via <picker />
+@ReactView(jsName: "picker")
+class NativePicker: RCTViewManager {
+
+  override func view() -> UIView {
+    HostingView(content: {
+      Picker("Picker", selection: .constant(0)) {
+        Text("Option 1").tag(0)
+        Text("Option 2").tag(1)
+        Text("Option 3").tag(2)
+      }
+    })
+  }
+}
+
+// Map View available via <map-view />
 @ReactView(jsName: "map-view")
 class MapView: RCTViewManager {
 
@@ -41,5 +57,39 @@ class MapView: RCTViewManager {
 
   override func view() -> UIView {
     MKMapView()
+  }
+}
+
+
+import SwiftUI
+import UIKit
+
+public final class HostingView: RCTView {
+  public init(@ViewBuilder content: () -> some View) {
+    super.init(frame: .zero)
+    
+    if #available(iOS 16.0, *) {
+      let contentView = UIHostingConfiguration(content: content)
+        .margins(.all, 0)
+        .makeContentView()
+      contentView.translatesAutoresizingMaskIntoConstraints = false
+      addSubview(contentView)
+      NSLayoutConstraint.activate([
+        contentView.topAnchor.constraint(equalTo: topAnchor),
+        contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+        contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+        contentView.bottomAnchor.constraint(equalTo: bottomAnchor)
+      ])
+    } else {
+      
+      // Fallback on earlier versions
+    }
+    
+    
+  }
+  
+  @available(*, unavailable)
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
