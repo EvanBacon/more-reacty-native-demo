@@ -7,7 +7,8 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       picker: unknown;
-      "map-view": ViewProps & { zoomEnabled?: boolean };
+      /** MKMapView */
+      "map-view": import("react-native").ViewProps & { zoomEnabled?: boolean };
     }
   }
 }
