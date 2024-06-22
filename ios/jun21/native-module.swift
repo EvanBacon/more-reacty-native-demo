@@ -9,17 +9,31 @@ import Foundation
 import React
 import ReactBridge
 import MapKit
+import EventKitUI
 
 @ReactModule
-class CalendarModule: NSObject, RCTBridgeModule {
+class calendar: NSObject, RCTBridgeModule {
   
   @ReactMethod
-  @objc func createEvent(title: String, location: String) {
-    print("Create event '\(title)' at '\(location)'")
+  @objc func createEvent() {
+    // Create event
+    let event = EKEvent(eventStore: EKEventStore())
+    event.title = "My Event"
+    event.startDate = Date()
+    event.endDate = Date().addingTimeInterval(60 * 60)
+
+// On main thread
+    DispatchQueue.main.async {
+      let rootViewController = UIApplication.shared.keyWindow?.rootViewController
+      // Present event
+      let controller = EKEventEditViewController()
+      controller.event = event
+      rootViewController?.present(controller, animated: true, completion: nil)
+    }
   }
 }
 
-@ReactView(jsName: "mapview")
+@ReactView(jsName: "map-view")
 class MapView: RCTViewManager {
 
   @ReactProperty

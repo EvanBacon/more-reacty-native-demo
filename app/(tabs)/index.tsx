@@ -1,21 +1,41 @@
 import { StyleSheet } from "react-native";
 
 import EditScreenInfo from "@/components/EditScreenInfo";
-import { Text, View } from "@/components/Themed";
+import { Text, View, ViewProps } from "@/components/Themed";
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      "map-view": ViewProps & { zoomEnabled?: boolean };
+    }
+  }
+}
 
 export default function TabOneScreen() {
-  // console.log(">Calendar", native.CalendarModule);
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
       <View
         style={styles.separator}
         lightColor="#eee"
         darkColor="rgba(255,255,255,0.1)"
       />
       <EditScreenInfo path="app/(tabs)/index.tsx" />
-      <mapview style={{ flex: 1 }} />
-      {/* <mapview style={{ flex: 1 }} /> */}
+      <Text
+        onPress={() => {
+          console.log(">Calendar", native.calendar);
+          native.calendar.createEvent();
+        }}
+        style={styles.title}
+      >
+        Create Event
+      </Text>
+      <map-view
+        style={{ flex: 1 }}
+        zoomEnabled={false}
+        onTouchStart={() => {
+          console.log("Hey");
+        }}
+      />
     </View>
   );
 }

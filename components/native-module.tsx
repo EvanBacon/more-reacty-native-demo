@@ -1,11 +1,5 @@
-import { requireNativeComponent } from "react-native";
-
-// export const MapView =
-//   require("react-native").requireNativeComponent("mapview");
-
 declare var native: typeof import("react-native").NativeModules;
 if (typeof native === "undefined") {
-  // @ts-expect-error
   globalThis.native = new Proxy(
     {},
     {
