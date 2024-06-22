@@ -21,6 +21,15 @@ export default function TabOneScreen() {
       }}
     >
       <div
+        onTouchStart={async () => {
+          alert(
+            JSON.stringify(
+              await fetch("/api/hello").then((res) => res.json()),
+              null,
+              2
+            )
+          );
+        }}
         style={{
           width: 100,
           height: 100,
@@ -30,15 +39,19 @@ export default function TabOneScreen() {
         <p>Hey</p>
       </div>
 
-      <picker />
+      {process.env.EXPO_OS === "ios" && (
+        <>
+          <picker />
 
-      <map-view
-        style={{ flex: 1 }}
-        zoomEnabled={false}
-        onTouchStart={() => {
-          console.log("Touch");
-        }}
-      />
+          <map-view
+            style={{ flex: 1 }}
+            zoomEnabled={false}
+            onTouchStart={() => {
+              console.log("Touch");
+            }}
+          />
+        </>
+      )}
     </div>
   );
 }
