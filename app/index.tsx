@@ -1,16 +1,4 @@
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      picker: unknown;
-      /** MKMapView */
-      "map-view": import("react-native").ViewProps & { zoomEnabled?: boolean };
-
-      // p: import("react-native").TextProps;
-    }
-  }
-}
-
-export default function TabOneScreen() {
+export default function Home() {
   return (
     <div
       style={{
@@ -54,4 +42,15 @@ export default function TabOneScreen() {
       )}
     </div>
   );
+}
+
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      /** MKMapView */
+      "map-view": import("react-native").ViewProps & { zoomEnabled?: boolean };
+      /** SwiftUI Picker */
+      picker: unknown;
+    }
+  }
 }
