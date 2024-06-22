@@ -3,7 +3,24 @@ import { StyleSheet } from "react-native";
 import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 
+declare var native: typeof import("react-native").NativeModules;
+if (typeof native === "undefined") {
+  // @ts-expect-error
+  globalThis.native = new Proxy(
+    {},
+    {
+      get(target, prop) {
+        const NativeModules = require("react-native").NativeModules;
+        if (prop in NativeModules) {
+          return NativeModules[prop];
+        }
+      },
+    }
+  );
+}
+
 export default function TabOneScreen() {
+  console.log(">Calendar", native.CalendarModule);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
