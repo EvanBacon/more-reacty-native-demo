@@ -1,3 +1,17 @@
+diff --git a/node_modules/react-native/Libraries/Renderer/implementations/ReactNativeRenderer-dev.js b/node_modules/react-native/Libraries/Renderer/implementations/ReactNativeRenderer-dev.js
+index d993f42..a99c990 100644
+--- a/node_modules/react-native/Libraries/Renderer/implementations/ReactNativeRenderer-dev.js
++++ b/node_modules/react-native/Libraries/Renderer/implementations/ReactNativeRenderer-dev.js
+@@ -5586,6 +5586,9 @@ to return true:wantsResponderID|                            |
+     function getChildHostContext(parentHostContext, type) {
+       var prevIsInAParentText = parentHostContext.isInAParentText;
+       var isInAParentText =
++        // Patch to support custom native view
++        type === 'p' ||
++        // Others...
+         type === "AndroidTextInput" || // Android
+         type === "RCTMultilineTextInputView" || // iOS
+         type === "RCTSinglelineTextInputView" || // iOS
 diff --git a/node_modules/react-native/Libraries/Renderer/shims/ReactNativeViewConfigRegistry.js b/node_modules/react-native/Libraries/Renderer/shims/ReactNativeViewConfigRegistry.js
 index cbcdfce..2f2f58b 100644
 --- a/node_modules/react-native/Libraries/Renderer/shims/ReactNativeViewConfigRegistry.js

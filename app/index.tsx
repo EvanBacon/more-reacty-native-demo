@@ -1,11 +1,11 @@
-import { Text } from "react-native";
-
 declare global {
   namespace JSX {
     interface IntrinsicElements {
       picker: unknown;
       /** MKMapView */
       "map-view": import("react-native").ViewProps & { zoomEnabled?: boolean };
+
+      // p: import("react-native").TextProps;
     }
   }
 }
@@ -27,17 +27,8 @@ export default function TabOneScreen() {
           backgroundColor: "red",
         }}
       >
-        <Text>Hey</Text>
+        <p>Hey</p>
       </div>
-
-      <Text
-        onPress={() => {
-          console.log(">Calendar", native.calendar);
-          // native.calendar.createEvent();
-        }}
-      >
-        Create Event
-      </Text>
 
       <picker />
 

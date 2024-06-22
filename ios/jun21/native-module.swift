@@ -69,6 +69,14 @@ class NativeView: RCTViewManager {
   }
 }
 
+@ReactView(jsName: "p")
+class NativeP: RCTTextViewManager {
+
+  override func view() -> UIView {
+    RCTTextView()
+  }
+}
+
 import SwiftUI
 import UIKit
 
