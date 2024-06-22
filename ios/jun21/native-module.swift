@@ -8,6 +8,7 @@
 import Foundation
 import React
 import ReactBridge
+import MapKit
 
 @ReactModule
 class CalendarModule: NSObject, RCTBridgeModule {
@@ -15,5 +16,16 @@ class CalendarModule: NSObject, RCTBridgeModule {
   @ReactMethod
   @objc func createEvent(title: String, location: String) {
     print("Create event '\(title)' at '\(location)'")
+  }
+}
+
+@ReactView
+class MapView: RCTViewManager {
+
+  @ReactProperty
+  var zoomEnabled: Bool?
+
+  override func view() -> UIView {
+    MKMapView()
   }
 }

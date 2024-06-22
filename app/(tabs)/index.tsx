@@ -3,21 +3,7 @@ import { StyleSheet } from "react-native";
 import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 
-declare var native: typeof import("react-native").NativeModules;
-if (typeof native === "undefined") {
-  // @ts-expect-error
-  globalThis.native = new Proxy(
-    {},
-    {
-      get(target, prop) {
-        const NativeModules = require("react-native").NativeModules;
-        if (prop in NativeModules) {
-          return NativeModules[prop];
-        }
-      },
-    }
-  );
-}
+import { MapView } from "@/components/native-module";
 
 export default function TabOneScreen() {
   console.log(">Calendar", native.CalendarModule);
@@ -30,6 +16,7 @@ export default function TabOneScreen() {
         darkColor="rgba(255,255,255,0.1)"
       />
       <EditScreenInfo path="app/(tabs)/index.tsx" />
+      <MapView style={{ flex: 1 }} />
     </View>
   );
 }
@@ -37,7 +24,7 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
+    alignItems: "stretch",
     justifyContent: "center",
   },
   title: {
