@@ -3,10 +3,8 @@ import { StyleSheet } from "react-native";
 import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 
-import { MapView } from "@/components/native-module";
-
 export default function TabOneScreen() {
-  console.log(">Calendar", native.CalendarModule);
+  // console.log(">Calendar", native.CalendarModule);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Tab One</Text>
@@ -16,7 +14,8 @@ export default function TabOneScreen() {
         darkColor="rgba(255,255,255,0.1)"
       />
       <EditScreenInfo path="app/(tabs)/index.tsx" />
-      <MapView style={{ flex: 1 }} />
+      <mapview style={{ flex: 1 }} />
+      {/* <mapview style={{ flex: 1 }} /> */}
     </View>
   );
 }

@@ -1,6 +1,7 @@
 import { requireNativeComponent } from "react-native";
 
-export const MapView = requireNativeComponent("MapView");
+// export const MapView =
+//   require("react-native").requireNativeComponent("mapview");
 
 declare var native: typeof import("react-native").NativeModules;
 if (typeof native === "undefined") {

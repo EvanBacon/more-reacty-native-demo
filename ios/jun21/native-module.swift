@@ -19,7 +19,7 @@ class CalendarModule: NSObject, RCTBridgeModule {
   }
 }
 
-@ReactView
+@ReactView(jsName: "mapview")
 class MapView: RCTViewManager {
 
   @ReactProperty
