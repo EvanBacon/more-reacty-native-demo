@@ -112,3 +112,7 @@ The result is a React Native that feels more like the web and requires substanti
 I've demonstrated here that you can still have types, doc blocks, and all the other benefits of React without the boilerplate of React Native.
 
 Overall, this workflow lends itself better to jumping between JS and native code to expose new APIs or views. It's also easier to maintain because there are fewer bridging APIs to keep in sync. In the future, we should generate the TypeScript types and doc blocks from the Swift/Kotlin code, but that's a problem for another day.
+
+## Web interop
+
+Though it's not perfect, and possibly more confusing than helpful— I did play with adding a `div` view which just re-exports `RCTView`. Works like a View component but uses syntax that lends itself much better to use with a shared web codebase.

@@ -61,6 +61,14 @@ class MapView: RCTViewManager {
 }
 
 
+@ReactView(jsName: "div")
+class NativeView: RCTViewManager {
+
+  override func view() -> UIView {
+    RCTView()
+  }
+}
+
 import SwiftUI
 import UIKit
 

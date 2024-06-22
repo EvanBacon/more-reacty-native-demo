@@ -1,4 +1,4 @@
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 
 declare global {
   namespace JSX {
@@ -12,7 +12,7 @@ declare global {
 
 export default function TabOneScreen() {
   return (
-    <View
+    <div
       style={{
         flex: 1,
         alignItems: "stretch",
@@ -20,6 +20,16 @@ export default function TabOneScreen() {
         gap: 16,
       }}
     >
+      <div
+        style={{
+          width: 100,
+          height: 100,
+          backgroundColor: "red",
+        }}
+      >
+        <Text>Hey</Text>
+      </div>
+
       <Text
         onPress={() => {
           console.log(">Calendar", native.calendar);
@@ -28,14 +38,16 @@ export default function TabOneScreen() {
       >
         Create Event
       </Text>
+
       <picker />
+
       <map-view
         style={{ flex: 1 }}
         zoomEnabled={false}
         onTouchStart={() => {
-          console.log("Hey");
+          console.log("Touch");
         }}
       />
-    </View>
+    </div>
   );
 }
