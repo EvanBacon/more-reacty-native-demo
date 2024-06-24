@@ -1,6 +1,4 @@
-# Swift Macros experiment
-
-This is a simple experiment of using [ReactBridge](https://github.com/ikhvorost/ReactBridge) with Expo Router.
+# A more Reacty React Native experiment
 
 TL;DR: Import-less native views and modules, ex: [`app/index.tsx`](https://github.com/EvanBacon/react-native-swift-macros-demo/blob/e70f40867d236d4279fb11310179db3c07bacc6b/app/index.tsx#L3C4-L10C6)
 
@@ -135,3 +133,9 @@ Overall, this workflow lends itself better to jumping between JS and native code
 ## Web interop
 
 Though it's not perfect, and possibly more confusing than helpful— I did play with adding a `div` view which just re-exports `RCTView`. Works like a View component but uses syntax that lends itself much better to use with a shared web codebase.
+
+
+## Other cool stuff 
+
+I used this Swift Macros library [ReactBridge](https://github.com/ikhvorost/ReactBridge) with Expo Router. I found this package in the [Indeed Job Search](https://apps.apple.com/us/app/indeed-job-search/id309735670) iOS app.
+
