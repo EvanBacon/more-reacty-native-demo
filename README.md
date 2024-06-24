@@ -2,6 +2,25 @@
 
 This is a simple experiment of using [ReactBridge](https://github.com/ikhvorost/ReactBridge) with Expo Router.
 
+TL;DR: Import-less native views and modules, ex: [`app/index.tsx`](https://github.com/EvanBacon/react-native-swift-macros-demo/blob/e70f40867d236d4279fb11310179db3c07bacc6b/app/index.tsx#L3C4-L10C6)
+
+```js
+export default function Home() {
+  return (
+    <div
+      style={{
+        flex: 1,
+        alignItems: "stretch",
+        justifyContent: "center",
+        gap: 16,
+      }}
+    >
+      <p onPress={() => native?.calendar.openModal()}>Hey</p>
+    </div>
+  )
+}
+```
+
 ## Built-in Views
 
 React Native needs to have less boilerplate ([opinion: built-in react views](https://x.com/baconbrix/status/1773800723383275952?s=46&t=4GpE_iEDNlOGqhX9K_d56A)). This experiment patches React Native to support using lowercase JSX views that are registered just in time.
